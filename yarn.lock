@@ -1861,6 +1861,11 @@
     "@types/testing-library__dom" "*"
     pretty-format "^25.1.0"
 
+"@types/webpack-env@^1.15.1":
+  version "1.17.0"
+  resolved "https://registry.npmmirror.com/@types/webpack-env/-/webpack-env-1.17.0.tgz#f99ce359f1bfd87da90cc4a57cab0a18f34a48d0"
+  integrity sha512-eHSaNYEyxRA5IAG0Ym/yCyf86niZUIF/TpWKofQI/CVfh5HsMEUyfE2kwFxha4ow0s5g0LfISQxpDKjbRDrizw==
+
 "@types/yargs-parser@*":
   version "21.0.0"
   resolved "https://registry.npmmirror.com/@types/yargs-parser/-/yargs-parser-21.0.0.tgz#0c60e537fa790f5f9472ed2776c2b71ec117351b"
