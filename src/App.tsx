@@ -1,55 +1,89 @@
-import React from "react";
+import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-  Link
-} from "react-router-dom";
+  Link,
+  Redirect
+} from 'react-router-dom';
+import styled from 'styled-components';
 
-export default function App() {
+const Wrapper = styled.div`
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+`;
+const Main = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+`;
+const Nav = styled.nav`
+  border: 1px solid blue;
+  > ul {
+    display:flex;
+    > li{
+      width: 33.3333%;
+      text-align:center;
+      padding: 16px;
+    }
+  }
+`;
+
+function App() {
   return (
     <Router>
-      <div>
-        <nav>
+      <Wrapper>
+        <Main>
+          <Switch>
+            <Route path="/tags">
+              <Tags/>
+            </Route>
+            <Route path="/money">
+              <Money/>
+            </Route>
+            <Route path="/statistics">
+              <Statistics/>
+            </Route>
+            <Redirect exact from="/" to="/money"/>
+            <Route path="*">
+              <NoMatch/>
+            </Route>
+          </Switch>
+        </Main>
+        <Nav>
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/tags">标签页</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/money">记账页</Link>
             </li>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/statistics">统计页</Link>
             </li>
           </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+        </Nav>
+      </Wrapper>
     </Router>
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function NoMatch() {
+  return (
+    <div>页面不存在，你丫输错地址了吧！</div>
+  );
 }
 
-function About() {
-  return <h2>About</h2>;
+function Statistics() {
+  return <h2>统计页面</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Tags() {
+  return <h2>标签页面</h2>;
 }
+
+function Money() {
+  return <h2>记账页面</h2>;
+}
+
+export default App;
