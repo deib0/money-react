@@ -49,5 +49,4 @@ const NumberPadSection = styled.section`
   }
 `;
 
-
 export {NumberPadSection};
