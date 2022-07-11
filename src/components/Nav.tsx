@@ -15,7 +15,7 @@ const NavWrapper = styled.nav`
       > a {
         display: flex;
         flex-direction: column;
-        padding: 4px 0;
+        padding: 10px 0;
         justify-content: center;
         align-items: center;
         .icon {
@@ -40,19 +40,16 @@ const Nav = () => {
         <li>
           <NavLink to="/tags" activeClassName="selected">
             <Icon name="labels"/>
-            标签页
           </NavLink>
         </li>
         <li>
           <NavLink to="/money" activeClassName="selected">
             <Icon name="money"/>
-            记账页
           </NavLink>
         </li>
         <li>
           <NavLink to="/statistics" activeClassName="selected">
             <Icon name="account"/>
-            统计页
           </NavLink>
         </li>
       </ul>
