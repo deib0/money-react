@@ -25,13 +25,13 @@ const Wrapper = styled.section`
     }
   }
 `;
-
-const CategorySection =()=>{
+type Props = {value:string,onChange:(category:string)=>void}
+const CategorySection =(props:Props)=>{
   const [categoryList] = useState<('+'|'-')[]>(['-','+'])
   const categoryMap = {'+':'收入','-':'支出'}
-  let [category,setCategory] = useState('-')
+  let category=props.value
   const onClick =(value:string)=>{
-   setCategory(value)
+    props.onChange(value)
   }
   return (
       <Wrapper>

@@ -22,9 +22,10 @@ const Wrapper = styled.section`
     margin-top: 8px;
   }
 `;
-const TagsSection:React.FC=()=>{
+type Props ={value:string[],onChange:(selected:string[])=>void}
+const TagsSection:React.FC<Props> =(props:Props)=>{
   let [tags,SetTags] = useState(['衣','食','住','行'])
-  let [selectedTags,setSelectedTags] = useState<string[]>([])
+  let selectedTags=props.value
   const addTag =()=>{
     let newTag =prompt('创建新的标签吧')
     if(newTag!==null){
@@ -39,9 +40,9 @@ const TagsSection:React.FC=()=>{
   const toggle=(tag:string)=>{
     let index =selectedTags.indexOf(tag)
     if(index>=0){
-      setSelectedTags(selectedTags.filter(item=>item!==tag))
+      props.onChange(selectedTags.filter(item=>item!==tag))
     }else{
-      setSelectedTags([...selectedTags,tag])
+      props.onChange([...selectedTags,tag])
     }
   }
   const toggleClass=(tag:string)=>{
@@ -61,6 +62,7 @@ const TagsSection:React.FC=()=>{
             key={tag} >{tag}</li>
             )}
         </ol>
+        {selectedTags}
         <button onClick={()=>addTag()}>新增标签</button>
       </Wrapper>
   )
