@@ -1,10 +1,14 @@
 import React from "react";
 import Layout from 'components/Layout';
+import { useTags } from "useTags";
 
 function Tags() {
+    let {tags,setTags} = useTags()
     return (
     <Layout>
-        <h2>标签页面</h2>
+        <ul>
+                {tags.map(item=><li key={item}>{item}</li>)}
+        </ul>
     </Layout>
     )
   }
