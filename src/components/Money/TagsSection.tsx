@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 const Wrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
@@ -22,7 +22,7 @@ const Wrapper = styled.section`
     margin-top: 8px;
   }
 `;
-const TagsSection:FC=()=>{
+const TagsSection:React.FC=()=>{
   let [tags,SetTags] = useState(['衣','食','住','行'])
   let [selectedTags,setSelectedTags] = useState<string[]>([])
   const addTag =()=>{
@@ -37,6 +37,7 @@ const TagsSection:FC=()=>{
     }
   }
   const toggle=(tag:string)=>{
+    console.log('selectedTags',selectedTags)
     let index =selectedTags.indexOf(tag)
     if(index>=0){
       setSelectedTags(selectedTags.filter(item=>item!==tag))

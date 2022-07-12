@@ -3,9 +3,6 @@ import App from 'App';
 import ReactDOM from 'react-dom';
 import 'index.scss'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+ReactDOM.render(<App />,
   document.querySelector('#root')
 );
