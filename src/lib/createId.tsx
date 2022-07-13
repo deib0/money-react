@@ -1,6 +1,8 @@
-let id = 0 
+let maxId = 0
 const createId =()=>{
-    id+=1
-    return id
+    maxId=parseInt(localStorage.getItem('maxId')||'0')
+    maxId+=1
+    localStorage.setItem('maxId',maxId.toString())
+    return maxId
 }
 export {createId}

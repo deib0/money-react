@@ -29,7 +29,6 @@ const Tag=()=>{
     let tag = findTag(parseInt(urlId))
     const getBack =()=>{
         window.history.back()
-        
     }
     return (
         <Layout>
@@ -39,16 +38,16 @@ const Tag=()=>{
         <Icon/>
       </TopBar>
       <InputWrapper>
-        <Input 
+        {tag?<Input 
         label="标签名" type="text" placeholder="标签名" value={tag.tagName}
         onChange={(e)=>{updateTag(tag.tagId,{name:e.target.value})}}
-        />
+        />:''}
       </InputWrapper>
       <Center>
         <Space/>
         <Space/>
         <Space/>
-        <Button onClick={()=>removeTag(tag.tagId)}>删除标签</Button>
+        <Button onClick={()=>{removeTag(tag.tagId);window.history.back()}}>删除标签</Button>
       </Center>
     </Layout>
     )

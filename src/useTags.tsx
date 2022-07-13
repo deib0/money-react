@@ -1,8 +1,23 @@
 import { createId } from 'lib/createId';
-import {useState} from 'react';
-let defaultTags = [{tagId:createId(),tagName:'衣'},{tagId:createId(),tagName:'食'},{tagId:createId(),tagName:'住'},{tagId:createId(),tagName:'行'}]
+import {useEffect, useState} from 'react';
+import { useUpdate } from './hooks/useUpdate';
 function useTags(){
-     let [tags,setTags] =useState(defaultTags)
+     let [tags,setTags] =useState<{tagId:number,tagName:string}[]>([])
+     useEffect(()=>{
+          let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
+          if (localTags.length === 0) {
+            localTags = [
+              {tagId: createId(), tagName: '衣'},
+              {tagId: createId(), tagName: '食'},
+              {tagId: createId(), tagName: '住'},
+              {tagId: createId(), tagName: '行'},
+            ];
+          }
+          setTags(localTags);
+        },[])
+     useUpdate(() => {
+          window.localStorage.setItem('tags', JSON.stringify(tags));
+     }, [tags]);
      let findTag=(tagId:number)=>{
           return tags.filter(item=>item.tagId===tagId)[0]
      }
