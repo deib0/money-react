@@ -45,10 +45,10 @@ function Tags() {
   return (
     <Layout>
       <TagList>
-        {tags.map(tag =>
-          <li key={tag}>
-            <Link to={"/tags/"+tag} >
-              <p className="oneLine">{tag}</p>
+        {tags.map(item =>
+          <li key={item.tagId}>
+            <Link to={"/tags/"+item.tagId} >
+              <p className="oneLine">{item.tagName}</p>
               <Icon name="right"/>
             </Link>
           </li>
