@@ -22,12 +22,11 @@ const InputWrapper = styled.div`
   padding: 0 16px;
   margin-top: 8px;
 `;
-
 type Params ={tagId:string}
 const Tag=()=>{
-    const {tags} =useTags()
-    let urlId = (useParams()as Params).tagId 
-    let tag = tags.filter(item=>item.tagId===parseInt(urlId))[0]
+    let urlId = (useParams()as Params).tagId
+    const {findTag,updateTag} =useTags()
+    let tag = findTag(parseInt(urlId))
     return (
         <Layout>
       <TopBar>
@@ -37,7 +36,9 @@ const Tag=()=>{
       </TopBar>
       <InputWrapper>
         <Input 
-        label="标签名" type="text" placeholder="标签名" value={tag.tagName}/>
+        label="标签名" type="text" placeholder="标签名" value={tag.tagName}
+        onChange={(e)=>{updateTag(tag.tagId,{name:e.target.value})}}
+        />
       </InputWrapper>
       <Center>
         <Space/>
