@@ -37,7 +37,6 @@ const TagsSection:React.FC<Props> =(props:Props)=>{
       if(index>=0){
         alert('换一个标签名呗')
       }else{
-
         setTags([...tags,{tagId:createId(),tagName:newTag}])
       }
     }

@@ -33,18 +33,31 @@ function useTags(){
         };
      const updateTag = (id: number, obj: { name: string }) => {
           const index = findTagIndex(id);
-          const tagsClone = JSON.parse(JSON.stringify(tags));
+          const tagsClone = cloneTag()
           tagsClone.splice(index, 1, {tagId: id, tagName: obj.name});
           setTags(tagsClone);
         };
      const removeTag=(tagId:number)=>{
           let index=findTagIndex(tagId)
-          const tagsClone = JSON.parse(JSON.stringify(tags));
-          tagsClone.splice(index, 1);
+          let tagsClone =cloneTag()
+          tagsClone.splice(index, 1)
           setTags(tagsClone)
-
      }
-     return {tags,setTags,findTag,updateTag,removeTag}
+     const cloneTag=()=>{
+          return JSON.parse(JSON.stringify(tags))as typeof tags
+     }
+     const addTag=()=>{
+        let tagName = prompt('请输入标签名')||''
+        let tagNames:string[]=[]
+        tags.map(item=>tagNames.push(item.tagName))
+        let index =tagNames.indexOf(tagName)
+        if(index>=0){
+          alert('换个名字吧')
+        }else{
+          setTags([...cloneTag(),{tagName:tagName,tagId:createId()}])
+        }
+     }
+     return {tags,setTags,findTag,updateTag,removeTag,addTag}
 
 }
 export {useTags}
