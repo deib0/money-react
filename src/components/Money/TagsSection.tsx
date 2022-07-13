@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { useTags } from 'useTags';
+import { createId } from 'lib/createId';
 
 const Wrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
@@ -37,7 +38,7 @@ const TagsSection:React.FC<Props> =(props:Props)=>{
         alert('换一个标签名呗')
       }else{
 
-        setTags([...tags,{tagId:Math.random(),tagName:newTag}])
+        setTags([...tags,{tagId:createId(),tagName:newTag}])
       }
     }
   }
@@ -66,7 +67,7 @@ const TagsSection:React.FC<Props> =(props:Props)=>{
             key={item.tagId} >{item.tagName}</li>
             )}
         </ol>
-        {selectedTags}
+        {tags.map(item=>item.tagId)}
         <button onClick={()=>addTag()}>新增标签</button>
       </Wrapper>
   )
