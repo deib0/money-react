@@ -25,7 +25,7 @@ const InputWrapper = styled.div`
 type Params ={tagId:string}
 const Tag=()=>{
     let urlId = (useParams()as Params).tagId
-    const {findTag,updateTag} =useTags()
+    const {findTag,updateTag,removeTag} =useTags()
     let tag = findTag(parseInt(urlId))
     return (
         <Layout>
@@ -44,7 +44,7 @@ const Tag=()=>{
         <Space/>
         <Space/>
         <Space/>
-        <Button>删除标签</Button>
+        <Button onClick={()=>removeTag(tag.tagId)}>删除标签</Button>
       </Center>
     </Layout>
     )

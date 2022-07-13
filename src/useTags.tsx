@@ -22,7 +22,14 @@ function useTags(){
           tagsClone.splice(index, 1, {tagId: id, tagName: obj.name});
           setTags(tagsClone);
         };
-     return {tags,setTags,findTag,updateTag}
+     const removeTag=(tagId:number)=>{
+          let index=findTagIndex(tagId)
+          const tagsClone = JSON.parse(JSON.stringify(tags));
+          tagsClone.splice(index, 1);
+          setTags(tagsClone)
+
+     }
+     return {tags,setTags,findTag,updateTag,removeTag}
 
 }
 export {useTags}
