@@ -1,6 +1,6 @@
 import Layout from "components/Layout"
 import React from "react"
-import { useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import { useTags } from 'useTags';
 import styled from 'styled-components';
 import Icon from 'components/Icons';
@@ -27,10 +27,14 @@ const Tag=()=>{
     let urlId = (useParams()as Params).tagId
     const {findTag,updateTag,removeTag} =useTags()
     let tag = findTag(parseInt(urlId))
+    const getBack =()=>{
+        window.history.back()
+        
+    }
     return (
         <Layout>
       <TopBar>
-        <Icon name="left"/>
+        <Icon name="left" onClick={getBack} />
         <span>编辑标签</span>
         <Icon/>
       </TopBar>
