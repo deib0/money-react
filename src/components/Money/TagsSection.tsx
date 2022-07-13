@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
 import { useTags } from 'useTags';
-import { createId } from 'lib/createId';
 
 const Wrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
@@ -26,21 +25,8 @@ const Wrapper = styled.section`
 `;
 type Props ={value:number[],onChange:(selected:number[])=>void}
 const TagsSection:React.FC<Props> =(props:Props)=>{
-  let {tags,setTags} = useTags()
+  let {tags,setTags,addTag} = useTags()
   let selectedTags=props.value
-  const addTag =()=>{
-    let newTag =prompt('创建新的标签吧')
-    if(newTag!==null){
-      let tagNames =[] as string[]
-      tags.filter(item=>tagNames.push(item.tagName))
-      let index = tagNames.indexOf(newTag)
-      if(index>=0){
-        alert('换一个标签名呗')
-      }else{
-        setTags([...tags,{tagId:createId(),tagName:newTag}])
-      }
-    }
-  }
   const toggle=(tagId:number)=>{
     let index =selectedTags.indexOf(tagId)
     if(index>=0){

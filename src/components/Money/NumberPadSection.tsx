@@ -1,8 +1,13 @@
 import React from 'react';
 import { Wrapper } from './NumberPadComponents/Wrapper';
 import { generateOutput } from './NumberPadComponents/generateOutput';
-
-type Props = {value:string,onChange:(amount:string)=>void}
+type Record = {
+  tagId:number[],
+  notes:string,
+  category:string,
+  amount:string
+}
+type Props = {value:string,onChange:(amount:string)=>void,onOk:()=>void}
 const NumberPadSection: React.FC<Props> = (props:Props) => {
   let output = props.value
   const setOutput = (output: string) => {
@@ -17,7 +22,7 @@ const NumberPadSection: React.FC<Props> = (props:Props) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) {return;}
     if (text === 'OK') {
-      // TODO
+      props.onOk()
       return;
     }
     if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {

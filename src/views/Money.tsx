@@ -6,12 +6,14 @@ import {CategorySection} from 'components/Money/CategorySection';
 import {NotesSection} from 'components/Money/NotesSection';
 import {NumberPadSection} from 'components/Money/NumberPadSection';
 import {useState} from 'react';
+import { useRecordList } from 'useRecordList';
 
 const MyLayout = styled(Layout)`
   display:flex;
   flex-direction: column;
 `
 function Money() {
+  const {recordList,addRecordList} =useRecordList()
   const [record,setRecord]=useState({
     tagIds:[] as number[],
     notes :'',
@@ -39,6 +41,7 @@ function Money() {
       <NumberPadSection 
       value={record.amount}
       onChange={(amount)=>onChange({amount})}
+      onOk={()=>addRecordList(record)}
       />
     </MyLayout>
   );
