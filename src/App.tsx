@@ -9,12 +9,16 @@ import {
     Route,
     Redirect
   } from 'react-router-dom';
+import { Tag } from 'views/Tag';
 function App() {
   return (
     <Router>
             <Switch>
-                <Route path="/tags">
+                <Route exact path="/tags">
                 <Tags/>
+                </Route>
+                <Route exact path="/tags/:tag">
+                <Tag />
                 </Route>
                 <Route path="/money">
                 <Money/>
