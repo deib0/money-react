@@ -67,7 +67,6 @@ const TagsSection:React.FC<Props> =(props:Props)=>{
             key={item.tagId} >{item.tagName}</li>
             )}
         </ol>
-        {tags.map(item=>item.tagId)}
         <button onClick={()=>addTag()}>新增标签</button>
       </Wrapper>
   )
