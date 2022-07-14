@@ -31,6 +31,9 @@ function useTags(){
           }
           return result;
         };
+      const getTagName =(tagId:number)=>{
+        return tags.filter(item=>item.tagId===tagId)[0].tagName
+      }
      const updateTag = (id: number, obj: { name: string }) => {
           const index = findTagIndex(id);
           const tagsClone = cloneTag()
@@ -57,7 +60,7 @@ function useTags(){
           setTags([...cloneTag(),{tagName:tagName,tagId:createId()}])
         }
      }
-     return {tags,setTags,findTag,updateTag,removeTag,addTag}
+     return {tags,setTags,findTag,updateTag,removeTag,addTag,getTagName}
 
 }
 export {useTags}

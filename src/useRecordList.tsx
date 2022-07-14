@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUpdate } from './hooks/useUpdate';
-type Record = {
+export type Record = {
     tagIds:number[],
     notes:string,
     category:string,

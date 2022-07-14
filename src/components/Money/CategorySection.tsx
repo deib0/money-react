@@ -25,12 +25,12 @@ const Wrapper = styled.section`
     }
   }
 `;
-type Props = {value:string,onChange:(category:string)=>void}
+type Props = {value:'-'|'+',onChange:(category:'-'|'+')=>void}
 const CategorySection =(props:Props)=>{
   const [categoryList] = useState<('+'|'-')[]>(['-','+'])
   const categoryMap = {'+':'收入','-':'支出'}
   let category=props.value
-  const onClick =(value:string)=>{
+  const onClick =(value:'-'|'+')=>{
     props.onChange(value)
   }
   return (

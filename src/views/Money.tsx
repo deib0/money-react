@@ -17,7 +17,7 @@ function Money() {
   const [record,setRecord]=useState({
     tagIds:[] as number[],
     notes :'',
-    category: '-',
+    category: '-' as'-'|'+',
     amount: '0'
   }
   )
