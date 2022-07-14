@@ -13,7 +13,7 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `
 function Money() {
-  const {recordList,addRecordList} =useRecordList()
+  const {addRecordList} =useRecordList()
   const [record,setRecord]=useState({
     tagIds:[] as number[],
     notes :'',
@@ -33,7 +33,7 @@ function Money() {
       <NotesSection 
       value={record.notes}
       onChange={(notes)=>onChange({notes})}
-      />
+      />  
       <CategorySection 
       value={record.category}
       onChange={(category)=>onChange({category})}
